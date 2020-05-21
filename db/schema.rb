@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_114650) do
     t.integer "category_id"
     t.integer "user_id"
     t.integer "author_id"
+    t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["user_id"], name: "index_tests_on_user_id"
   end
@@ -68,4 +69,5 @@ ActiveRecord::Schema.define(version: 2020_05_21_114650) do
   add_foreign_key "questions", "tests"
   add_foreign_key "tests", "categories"
   add_foreign_key "tests", "users"
+  add_foreign_key "tests", "users", column: "author_id"
 end
