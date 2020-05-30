@@ -11,26 +11,26 @@ users = User.create!([{ name: 'Andrey' }, { name: 'Lera' }])
 categories = Category.create!([{ title: 'SQL' }, { title: 'NOSQL' }, { title: 'Rails' }])
 
 tests = Test.create!([
-  { title: 'SQL', level: 0, category_id: categories[0].id, user_id: users[0].id },
-  { title: 'ArangoDB', level: 1, category_id: categories[1].id, user_id: users[1].id },
-  { title: 'Rails', level: 2, category_id: categories[2].id, user_id: users[0].id }
+  { title: 'SQL', level: 0, category: categories[0], author: users[0] },
+  { title: 'ArangoDB', level: 1, category: categories[1], author: users[0] },
+  { title: 'Rails', level: 2, category: categories[2], author: users[0] }
 ])
 
 questions = Question.create!([
-  { text: 'Каким типом баз данных позволяет управлять язык SQL?', test_id: tests[0].id },
-  { text: 'Что представляет собой база данных? ', test_id: tests[1].id },
-  { text: 'Под какую платформу написан Rails?', test_id: tests[2].id },
-  { text: 'Какой язык запросов используется? ', test_id: tests[1].id }
+  { text: 'Каким типом баз данных позволяет управлять язык SQL?', test: tests[0] },
+  { text: 'Что представляет собой база данных? ', test: tests[1] },
+  { text: 'Под какую платформу написан Rails?', test: tests[2] },
+  { text: 'Какой язык запросов используется? ', test: tests[1] }
 ])
 
 answers = Answer.create!([
-  { text: 'Реляционными', correct: true, question_id: questions[0].id },
-  { text: 'Множество коллекций', correct: true, question_id: questions[1].id },
-  { text: 'AQL', correct: true, question_id: questions[3].id },
-  { text: 'ios', question_id: questions[2].id }
+  { text: 'Реляционными', correct: true, question: questions[0] },
+  { text: 'Множество коллекций', correct: true, question: questions[1] },
+  { text: 'AQL', correct: true, question: questions[3] },
+  { text: 'ios', question: questions[2] }
 ])
 
 completed_tests = CompletedTest.create!([
-  {user_id: users[0].id, test_id: tests[0].id},
-  {user_id: users[0].id, test_id: tests[1].id}
+  {user: users[0], test: tests[0] },
+  {user: users[0], test: tests[1] }
 ])
