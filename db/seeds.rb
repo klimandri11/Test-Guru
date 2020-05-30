@@ -11,9 +11,9 @@ users = User.create!([{ name: 'Andrey' }, { name: 'Lera' }])
 categories = Category.create!([{ title: 'SQL' }, { title: 'NOSQL' }, { title: 'Rails' }])
 
 tests = Test.create!([
-  { title: 'SQL', level: 0, category: categories[0], user_id: users[0].id, author: users[0] },
-  { title: 'ArangoDB', level: 1, category: categories[1], user_id: users[1].id, author: users[0] },
-  { title: 'Rails', level: 2, category: categories[2], user_id: users[0].id, author: users[0] }
+  { title: 'SQL', level: 0, category: categories[0], author: users[0] },
+  { title: 'ArangoDB', level: 1, category: categories[1], author: users[0] },
+  { title: 'Rails', level: 2, category: categories[2], author: users[0] }
 ])
 
 questions = Question.create!([
