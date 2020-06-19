@@ -25,12 +25,15 @@ questions = Question.create!([
 
 answers = Answer.create!([
   { text: 'Реляционными', correct: true, question: questions[0] },
+  { text: 'Не реляционными', question: questions[0] },
   { text: 'Множество коллекций', correct: true, question: questions[1] },
+  { text: 'Множество папок', question: questions[1] },
+  { text: 'Множество записей', question: questions[1] },
   { text: 'AQL', correct: true, question: questions[3] },
-  { text: 'ios', question: questions[2] }
-])
-
-completed_tests = CompletedTest.create!([
-  {user: users[0], test: tests[0] },
-  {user: users[0], test: tests[1] }
+  { text: 'SQL', question: questions[3] },
+  { text: 'RQL', question: questions[3] },
+  { text: 'LQL', question: questions[3] },
+  { text: 'IOS', question: questions[2] },
+  { text: 'Android', question: questions[2] },
+  { text: 'Кроссплатформенность', correct: true, question: questions[2] }
 ])
