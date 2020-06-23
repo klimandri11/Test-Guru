@@ -4,7 +4,12 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :created_tests, inverse_of: :author, class_name: 'Test', foreign_key: 'author_id'
 
-  validates :email, presence: true
+  has_secure_password
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+\.[a-z]+\z/i
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: VALID_EMAIL_REGEX }
 
   def passed_tests(level)
     tests.where(level: level)
