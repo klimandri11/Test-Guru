@@ -2,9 +2,9 @@
 
 <p>Question <%= number_test(@test_passage) %></p>
 
-<b>
-  <%= @test_passage.current_question.text %>
-</b>
+<p>
+  <b> <%= @test_passage.current_question.text %> </b>
+</p>
 
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
   <ol>
@@ -16,7 +16,7 @@
       </li>
     <% end %>
   </ol>
-  <p>
-    <%= form.submit 'Next' %>
-  </p>
+
+  <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></p>
+  <p><%= form.submit 'Next' %></p>
 <% end %>
