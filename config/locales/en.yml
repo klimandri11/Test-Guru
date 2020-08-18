@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  description: "A question about %{title} from TestGuru"
+  test_passages:
+    gist:
+      success: "Gist was successfully created! %{link}"
+      failure: "Error while saving gist!"
