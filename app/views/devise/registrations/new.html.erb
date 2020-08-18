@@ -12,7 +12,7 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, autocomplete: "last name" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -29,6 +29,8 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= octicon 'shield-check', class: 'match hide' %>
+    <%= octicon 'shield', class: 'mismatch hide' %>
   </div>
 
   <div class="actions">
