@@ -36,3 +36,7 @@ en:
     gist:
       success: "Gist was successfully created! %{link}"
       failure: "Error while saving gist!"
+  admin:
+    tests:
+      form_inline:
+        submit: "ОК"

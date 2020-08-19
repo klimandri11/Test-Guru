@@ -1,3 +1,8 @@
+<div class="progress">
+  <%= content_tag :div, '', class: 'progress-bar', data: { progress: @test_passage.success_percentage } %>
+</div>
+
+
 <h1>Passing the <%= @test_passage.test.title %> Test</h1>
 
 <p>Question <%= number_test(@test_passage) %></p>

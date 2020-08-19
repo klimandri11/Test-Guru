@@ -19,4 +19,6 @@
  *= require scaffolds
  *= require test_passages
  *= require admin/gists
+ *= require typography/progress_bar
+ *= require tests
  */
