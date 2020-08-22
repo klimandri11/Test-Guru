@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_070842) do
+ActiveRecord::Schema.define(version: 2020_08_21_174605) do
 
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2020_08_12_070842) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "question_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "rule"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -43,6 +51,15 @@ ActiveRecord::Schema.define(version: 2020_08_12_070842) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "test_id"
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "received_badges", force: :cascade do |t|
+    t.integer "badge_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_received_badges_on_badge_id"
+    t.index ["user_id"], name: "index_received_badges_on_user_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -101,6 +118,8 @@ ActiveRecord::Schema.define(version: 2020_08_12_070842) do
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"
+  add_foreign_key "received_badges", "badges"
+  add_foreign_key "received_badges", "users"
   add_foreign_key "test_passages", "questions", column: "current_question_id"
   add_foreign_key "test_passages", "tests"
   add_foreign_key "test_passages", "users"
