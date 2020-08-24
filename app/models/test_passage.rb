@@ -10,7 +10,7 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
+    if answer_ids.present? && correct_answer?(answer_ids)
       self.correct_questions += 1
     end
 
@@ -27,6 +27,14 @@ class TestPassage < ApplicationRecord
 
   def number_current_question
     test.questions.count - remaining_questions.count
+  end
+
+  def time_left
+    (created_at + test.timer - Time.now).to_i
+  end
+
+  def time_over?
+    time_left <= 0
   end
 
   private

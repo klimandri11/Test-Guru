@@ -9,9 +9,9 @@
 categories = Category.create!([{ title: 'SQL' }, { title: 'NOSQL' }, { title: 'Rails' }])
 
 tests = Test.create!([
-  { title: 'SQL', level: 0, category: categories[0], author: users[0] },
-  { title: 'ArangoDB', level: 1, category: categories[1], author: users[0] },
-  { title: 'Rails', level: 2, category: categories[2], author: users[0] }
+  { title: 'SQL', level: 0, category: categories[0], author: users[0], timer: 10 },
+  { title: 'ArangoDB', level: 1, category: categories[1], author: users[0], timer: 20 },
+  { title: 'Rails', level: 2, category: categories[2], author: users[0], timer: 10 }
 ])
 
 questions = Question.create!([
