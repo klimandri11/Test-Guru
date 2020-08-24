@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_174605) do
+ActiveRecord::Schema.define(version: 2020_08_24_095750) do
 
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_174605) do
     t.string "name"
     t.string "image"
     t.string "rule"
+    t.string "option"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_174605) do
     t.integer "correct_questions", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "passed", default: false
     t.index ["current_question_id"], name: "index_test_passages_on_current_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_174605) do
     t.integer "category_id"
     t.integer "user_id"
     t.integer "author_id"
+    t.integer "timer"
     t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
