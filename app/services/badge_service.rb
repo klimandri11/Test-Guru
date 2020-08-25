@@ -19,8 +19,8 @@ class BadgeService
   end
 
   def complete_level(badge)
-    return unless @test.level == badge.option.to_i && @test_passage.successful?
     level = badge.option
+    return unless @test.level == level.to_i && @test_passage.successful?
     tests_level = Test.where(level: level.to_i).count
     tests_complited = @user.tests.successful_passage.where(level: level)
     if were_badges_issued?(badge)
@@ -31,8 +31,8 @@ class BadgeService
   end
 
   def complete_category(badge)
-    return unless @test.category.title == badge.option && @test_passage.successful?
     category = badge.option
+    return unless @test.category.title == category && @test_passage.successful?
     tests_category = Test.tests_titels(category).count
     tests_complited = @user.tests.successful_passage.tests_titels(category)
     if were_badges_issued?(badge)
