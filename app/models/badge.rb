@@ -4,6 +4,6 @@ class Badge < ApplicationRecord
   has_many :users, through: :received_badges
 
   validates :name, presence: true
-  validates :rule, inclusion: { in: BadgeService::RULES }
+  validates :rule, inclusion: { in: BadgeService::RULES }, uniqueness: { scope: :option }
 
 end

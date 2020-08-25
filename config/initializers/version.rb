@@ -1,1 +1,1 @@
-TestGuru::VERSION = '0.14.1'.freeze
+TestGuru::VERSION = '0.14.2'.freeze

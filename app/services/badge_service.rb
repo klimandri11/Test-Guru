@@ -20,24 +20,26 @@ class BadgeService
 
   def complete_level(badge)
     return unless @test.level == badge.option.to_i && @test_passage.successful?
+    level = badge.option
+    tests_level = Test.where(level: level.to_i).count
+    tests_complited = @user.tests.successful_passage.where(level: level)
     if were_badges_issued?(badge)
-      Test.where(level: badge.option.to_i).count == @user.tests.successful_passage.where(level: badge.option)
-          .after_badge_issue(award_date(badge)).uniq.count
+      tests_level == tests_complited.after_badge_issue(award_date(badge)).uniq.count
     else
-      Test.where(level: badge.option.to_i).count == @user.tests.successful_passage
-          .where(level: badge.option).uniq.count
+      tests_level == tests_complited.uniq.count
     end
   end
 
   def complete_category(badge)
     return unless @test.category.title == badge.option && @test_passage.successful?
+    category = badge.option
+    tests_category = Test.tests_titels(category).count
+    tests_complited = @user.tests.successful_passage.tests_titels(category)
     if were_badges_issued?(badge)
-      Test.tests_titels(badge.option).count == @user.tests.successful_passage.tests_titels(badge.option)
-           .after_badge_issue(award_date(badge)).uniq.count
-      else
-        Test.tests_titels(badge.option).count == @user.tests.successful_passage
-            .tests_titels(badge.option).uniq.count
-      end
+      tests_category == tests_complited.after_badge_issue(award_date(badge)).uniq.count
+    else
+      tests_category == tests_complited.uniq.count
+    end
   end
 
   private
@@ -51,8 +53,7 @@ class BadgeService
   end
 
   def were_badges_issued?(badge)
-    @user.badges.where(rule: badge.rule, option: badge.option).count > 0
+    @user.received_badge.where(badge: badge).exists?
   end
-
 
 end
