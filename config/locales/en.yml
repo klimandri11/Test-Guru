@@ -40,3 +40,7 @@ en:
     tests:
       form_inline:
         submit: "ОК"
+  badge_rules:
+    first_attempt: 'Complete the test in a first attempt'
+    complete_category: 'Complete all tests in category'
+    complete_level: 'Complete all tests on the level'

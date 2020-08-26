@@ -8,4 +8,8 @@ module ApplicationHelper
     "https://github.com/#{author}/#{repo}"
   end
 
+  def rules_collection
+    BadgeService::RULES.map { |rule| [t("badge_rules.#{rule}"), rule] }
+  end
+
 end
